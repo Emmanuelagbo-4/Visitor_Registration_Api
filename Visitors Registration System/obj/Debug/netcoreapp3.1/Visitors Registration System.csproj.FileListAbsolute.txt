@@ -129,3 +129,4 @@ C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration Syst
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.csproj.CopyComplete
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.pdb
+C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.csprojAssemblyReference.cache

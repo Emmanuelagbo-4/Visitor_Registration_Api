@@ -8,7 +8,7 @@ namespace Visitors_Registration_System.Models
     public class VisitorDTO
     {
         public Guid Id { get; set; }
-        public string VisitorReg { get; set; }
+        public int VisitorReg { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int PhoneNumber { get; set; }

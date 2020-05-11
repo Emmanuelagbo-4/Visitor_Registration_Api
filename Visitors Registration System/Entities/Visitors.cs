@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,8 +11,8 @@ namespace Visitors_Registration_System.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [Required]
-        public string VisitorReg { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int VisitorReg { get; set; }
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
