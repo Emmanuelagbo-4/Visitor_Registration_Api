@@ -19,5 +19,7 @@ namespace Visitors_Registration_System.Entities
         public byte[] PasswordSalt { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Status { get; set; }
+        public string Role { get; set; }
+        public string Token { get; set; }
     }
 }

@@ -19,23 +19,23 @@ using Visitors_Registration_System.Models;
 
 namespace Visitors_Registration_System.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Role.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
     {
         private IAdmin _userService;
         private IMapper _mapper;
-        private readonly AppSettings _appSettings;
+
 
         public AdminController(
             IAdmin userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+            IMapper mapper)
+
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings.Value;
+
         }
 
         [AllowAnonymous]
@@ -47,27 +47,8 @@ namespace Visitors_Registration_System.Controllers
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
             // return basic user info (without password) and token to store client side
-            return Ok(new
-            {
-                user.Id,
-                user.UserName,
-                Token = tokenString
-            });
+            return Ok(user);
         }
 
         [AllowAnonymous]
@@ -81,7 +62,7 @@ namespace Visitors_Registration_System.Controllers
             {
                 // save 
                 _userService.Create(user, userDto.Password);
-                return Ok();
+                return Ok(user);
             }
             catch (AppException ex)
             {
@@ -106,6 +87,6 @@ namespace Visitors_Registration_System.Controllers
             return Ok(userDto);
         }
 
-       
+
     }
 }

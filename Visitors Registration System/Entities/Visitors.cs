@@ -30,5 +30,7 @@ namespace Visitors_Registration_System.Entities
         [Required]
         [MaxLength(11)]
         public int EmergencyContact { get; set; }
+        public string Role { get; set; }
+        public string Token { get; set; }
     }
 }

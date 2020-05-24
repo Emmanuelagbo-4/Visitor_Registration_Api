@@ -36,6 +36,9 @@ namespace Visitors_Registration_System
         {
             services.AddCors();
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(databaseName : "VisitorsRegDb"));
+            //services.AddDbContext<AppDbContext>(options =>
+            //options.UseSqlServer(
+            //    Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
@@ -127,7 +130,7 @@ namespace Visitors_Registration_System
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

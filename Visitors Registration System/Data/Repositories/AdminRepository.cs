@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Visitors_Registration_System.Data.Interfaces;
 using Visitors_Registration_System.Entities;
@@ -11,17 +16,18 @@ namespace Visitors_Registration_System.Data.Repositories
     public class AdminRepository : IAdmin
     {
         private readonly AppDbContext _appDbContext;
-
-        public AdminRepository(AppDbContext appDbContext)
+        private readonly AppSettings _appSettings;
+        public AdminRepository(AppDbContext appDbContext, IOptions<AppSettings> appSettings)
         {
             _appDbContext = appDbContext;
+            _appSettings = appSettings.Value;
         }
         public Admin Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _appDbContext.Admin.SingleOrDefault(x => x.UserName == username);
+            var user = _appDbContext.Admin.Where(x => x.UserName == username).SingleOrDefault();
 
             // check if username exists
             if (user == null)
@@ -31,8 +37,22 @@ namespace Visitors_Registration_System.Data.Repositories
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
 
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            user.Token = tokenHandler.WriteToken(token);
             // authentication successful
-            return user;
+            return user.WithoutPassword();
         }
 
         public Admin Create(Admin user, string password)
@@ -50,10 +70,12 @@ namespace Visitors_Registration_System.Data.Repositories
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
+            user.Role = Role.Admin;
+
             _appDbContext.Admin.Add(user);
             _appDbContext.SaveChanges();
 
-            return user;
+            return user.WithoutPassword();
         }
 
         public IEnumerable<Admin> GetAll()
