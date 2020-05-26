@@ -1,11 +1,6 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Visitors_Registration_System.Data.Interfaces;
 using Visitors_Registration_System.Entities;
@@ -16,43 +11,12 @@ namespace Visitors_Registration_System.Data.Repositories
     public class VisitorsRepository : IVisitors
     {
         private readonly AppDbContext _appDbContext;
-        private readonly AppSettings _appSettings;
-        public VisitorsRepository(
-            AppDbContext appDbContext,
-            IOptions<AppSettings> appSettings)
+        
+        public VisitorsRepository(AppDbContext appDbContext)   
         {
             _appDbContext = appDbContext;
-            _appSettings = appSettings.Value;
         }
-        public Visitors Authenticate(string email)
-        {
-            if (string.IsNullOrEmpty(email))
-                return null;
-
-            var user = _appDbContext.Visitors.SingleOrDefault(c => c.Email == email);
-
-            //check if user exists
-            if (user == null)
-                return null;
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-            //authentication successful
-            return user;
-        }
+        
 
         public Visitors Create(Visitors visitors, string email)
         {
@@ -83,6 +47,22 @@ namespace Visitors_Registration_System.Data.Repositories
             return RegVisitor;
         }
 
-       
+        public Visitors  Login(string Email)
+        {
+            if (string.IsNullOrEmpty(Email))
+                throw new AppException("Phone number or Email is required");
+
+            var User = _appDbContext.Visitors.Where(x => x.Email == Email).FirstOrDefault();
+            if (User == null)
+                throw new AppException("Email is incorrect");
+
+            var EmailExists = _appDbContext.Visitors.Any(x => x.Email == Email);
+            
+            if (EmailExists)
+                return User;
+            
+            return User;
+            
+        }
     }
 }

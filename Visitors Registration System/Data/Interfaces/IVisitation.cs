@@ -11,5 +11,6 @@ namespace Visitors_Registration_System.Data.Interfaces
         IEnumerable<Visitation> GetAll();
         Visitation GetById(Guid Id);
         Visitation Create(Visitation visitation);
+        Visitation Leave(Guid Id, Visitation visitation);
     }
 }

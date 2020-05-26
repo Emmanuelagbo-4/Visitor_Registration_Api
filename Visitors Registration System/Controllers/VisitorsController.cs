@@ -36,17 +36,6 @@ namespace Visitors_Registration_System.Controllers
 
         }
 
-        [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]VisitorDTO userDTO)
-        {
-            var user = _userService.Authenticate(userDTO.Email);
-            if (user == null)
-                return BadRequest(new { message = "Email is incorrect" });
-
-            //return basic user info and token to store client side
-            return Ok(user);
-        }
 
         [AllowAnonymous]
         [HttpPost("register")]
@@ -66,6 +55,13 @@ namespace Visitors_Registration_System.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody]VisitorDTO visitorDTO)
+        {
+            _userService.Login(visitorDTO.Email);
+            return Ok("Successful Login");
         }
 
         [Authorize(Roles = Role.Admin)]

@@ -21,7 +21,7 @@ namespace Visitors_Registration_System.Entities
         public string LastName { get; set; }
         [Required]
         [MaxLength(11)]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         public string Address { get; set; }
@@ -29,7 +29,7 @@ namespace Visitors_Registration_System.Entities
         public string VehicleNumber { get; set; }
         [Required]
         [MaxLength(11)]
-        public int EmergencyContact { get; set; }
+        public string EmergencyContact { get; set; }
         public string Role { get; set; }
         public string Token { get; set; }
     }

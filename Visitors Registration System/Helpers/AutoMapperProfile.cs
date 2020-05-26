@@ -17,7 +17,7 @@ namespace Visitors_Registration_System.Helpers
             CreateMap<Models.VisitationDTO, Entities.Visitation>();
             CreateMap<Entities.Visitors, Models.VisitorDTO>();
             CreateMap<Models.VisitorDTO, Entities.Visitors>();
-           
+            CreateMap<Entities.Visitation, Models.VisitationCreationDTO>().ReverseMap();
             
         }
     }
