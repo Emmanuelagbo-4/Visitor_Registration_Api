@@ -10,8 +10,8 @@ using Visitors_Registration_System.Data;
 namespace Visitors_Registration_System.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200525182622_ChangedPhoneNumberAndEmergencyContactToString")]
-    partial class ChangedPhoneNumberAndEmergencyContactToString
+    [Migration("20200527143944_firstmigration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,7 @@ namespace Visitors_Registration_System.Migrations
                     b.Property<DateTime>("VisitDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("VisitorsId")
+                    b.Property<Guid>("VisitorsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("WhoToVisit")
@@ -149,8 +149,10 @@ namespace Visitors_Registration_System.Migrations
             modelBuilder.Entity("Visitors_Registration_System.Entities.Visitation", b =>
                 {
                     b.HasOne("Visitors_Registration_System.Entities.Visitors", "Visitors")
-                        .WithMany()
-                        .HasForeignKey("VisitorsId");
+                        .WithMany("Visitations")
+                        .HasForeignKey("VisitorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

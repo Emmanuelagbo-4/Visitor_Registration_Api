@@ -56,7 +56,7 @@ namespace Visitors_Registration_System.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody]VisitorDTO visitorDTO)
         {
@@ -64,7 +64,7 @@ namespace Visitors_Registration_System.Controllers
             return Ok("Successful Login");
         }
 
-        [Authorize(Roles = Role.Admin)]
+        [Authorize(Roles =Role.Admin)]
         [HttpGet]
         public IActionResult GetAll()
         {

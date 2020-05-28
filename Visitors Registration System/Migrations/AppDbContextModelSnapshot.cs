@@ -77,7 +77,7 @@ namespace Visitors_Registration_System.Migrations
                     b.Property<DateTime>("VisitDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("VisitorsId")
+                    b.Property<Guid>("VisitorsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("WhoToVisit")
@@ -147,8 +147,10 @@ namespace Visitors_Registration_System.Migrations
             modelBuilder.Entity("Visitors_Registration_System.Entities.Visitation", b =>
                 {
                     b.HasOne("Visitors_Registration_System.Entities.Visitors", "Visitors")
-                        .WithMany()
-                        .HasForeignKey("VisitorsId");
+                        .WithMany("Visitations")
+                        .HasForeignKey("VisitorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

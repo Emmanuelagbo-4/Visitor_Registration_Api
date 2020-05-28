@@ -8,6 +8,7 @@ namespace Visitors_Registration_System.Models
     public class VisitationDTO
     {
         public Guid Id { get; set; }
+        public Guid VisitorsId { get; set; }
         public VisitorDTO Visitors { get; set; }
         public DateTime VisitDate { get; set; }
         public DateTime TimeIn { get; set; }

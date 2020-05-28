@@ -20,11 +20,9 @@ namespace Visitors_Registration_System.Data.Repositories
         }
         public Visitation Create(Visitation visitation)
         {
-            var Visitor = _appDbContext.Visitors.Find(visitation.Visitors.Id);
-            if (Visitor == null)
-                throw new AppException("user is not registered");
-
-            visitation.Visitors.Id = Visitor.Id;
+            var VisitorExists = _appDbContext.Visitors.FirstOrDefault(x => x.Id == visitation.VisitorsId);
+            if (visitation.VisitorsId != VisitorExists.Id)
+                throw new AppException("Invalid User");
 
             visitation.TimeIn = DateTime.Now;
             visitation.VisitDate = DateTime.Today;

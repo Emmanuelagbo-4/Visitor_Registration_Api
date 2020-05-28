@@ -32,5 +32,6 @@ namespace Visitors_Registration_System.Entities
         public string EmergencyContact { get; set; }
         public string Role { get; set; }
         public string Token { get; set; }
+        public List<Visitation> Visitations { get; set; } = new List<Visitation>();
     }
 }

@@ -21,6 +21,7 @@ C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration Syst
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
@@ -51,12 +52,14 @@ C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration Syst
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
@@ -122,6 +125,7 @@ C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration Syst
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\staticwebassets\Visitors Registration System.StaticWebAssets.Manifest.cache
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\staticwebassets\Visitors Registration System.StaticWebAssets.xml
+C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.AssemblyInfoInputs.cache
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.AssemblyInfo.cs
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.RazorTargetAssemblyInfo.cache
@@ -129,7 +133,3 @@ C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration Syst
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.dll
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.pdb
 C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.csprojAssemblyReference.cache
-C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Aerodynamicman\source\repos\VS_2019_Projects\Visitors Registration System\Visitors Registration System\obj\Debug\netcoreapp3.1\Visitors Registration System.MvcApplicationPartsAssemblyInfo.cache

@@ -21,46 +21,47 @@ namespace Visitors_Registration_System.Controllers
     {
         private readonly IVisitation _visitation;
         private readonly IMapper _mapper;
-        private readonly AppDbContext _appDbContext;
-        public VisitationController(IVisitation visitation, IMapper mapper, AppDbContext appDbContext)
+       
+        public VisitationController(
+            IVisitation visitation,
+            IMapper mapper)
         {
             _visitation = visitation;
             _mapper = mapper;
-            _appDbContext = appDbContext;
+           
         }
 
+        
         [HttpGet("{id}", Name = "ObVisitation")]
         public IActionResult GetById(Guid id)
         {
-            //var CurrentUserId = Guid.Parse(User.Identity.Name);
-            //if (id != CurrentUserId && !User.IsInRole(Role.Admin))
-            //    return Forbid();
+            var CurrentUserId = Guid.Parse(User.Identity.Name);
+            if (id != CurrentUserId && !User.IsInRole(Role.Admin))
+                return Forbid();
 
             var userVisitation = _visitation.GetById(id);
             var visitationDTO = _mapper.Map<VisitationDTO>(userVisitation);
             return Ok(visitationDTO);
         }
 
-        [HttpPost("Create")]
-        public IActionResult Create([FromBody]Guid id, VisitationCreationDTO visitationCreationDTO)
-        {
-            var visitation = _mapper.Map<Visitation>(visitationCreationDTO);
-            _appDbContext.Add(visitation);
-            _appDbContext.SaveChanges();
-            var visitationDTO = _mapper.Map<VisitationDTO>(visitation);
 
-            return new CreatedAtRouteResult("ObVisitation", new { id = visitation.Id }, visitationDTO);
-            //try
-            //{
-            //    //save
-            //    _visitation.Create(userVisitation);
-            //    return Ok("Visitation form filled");
-            //}
-            //catch(AppException ex)
-            //{
-            //    //return an error msg if there is an exception
-            //    return BadRequest(new { message = ex.Message });
-            //}
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody]VisitationCreationDTO visitationCreationDTO)
+        {
+           
+            try
+            {
+                var visitation = _mapper.Map<Visitation>(visitationCreationDTO);
+                _visitation.Create(visitation);
+                var visitationDTO = _mapper.Map<VisitationDTO>(visitation);
+
+                return new CreatedAtRouteResult("ObVisitation", new { id = visitation.Id }, visitationDTO);
+            }
+            catch (AppException ex)
+            {
+                //return an error msg if there is an exception
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
        
@@ -75,7 +76,7 @@ namespace Visitors_Registration_System.Controllers
         }
 
         
-
+        //Make this a Patch
         [HttpPut("{id}")]
         public IActionResult Leave(Guid id, VisitationDTO visitationDTO)
         {

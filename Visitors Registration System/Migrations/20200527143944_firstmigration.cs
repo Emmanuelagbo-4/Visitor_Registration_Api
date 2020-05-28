@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Visitors_Registration_System.Migrations
 {
-    public partial class DefaultMigration : Migration
+    public partial class firstmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,11 +35,11 @@ namespace Visitors_Registration_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<int>(maxLength: 11, nullable: false),
+                    PhoneNumber = table.Column<string>(maxLength: 11, nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     VehicleNumber = table.Column<string>(maxLength: 10, nullable: true),
-                    EmergencyContact = table.Column<int>(maxLength: 11, nullable: false),
+                    EmergencyContact = table.Column<string>(maxLength: 11, nullable: false),
                     Role = table.Column<string>(nullable: true),
                     Token = table.Column<string>(nullable: true)
                 },
@@ -53,7 +53,7 @@ namespace Visitors_Registration_System.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    VisitorsId = table.Column<Guid>(nullable: true),
+                    VisitorsId = table.Column<Guid>(nullable: false),
                     VisitDate = table.Column<DateTime>(nullable: false),
                     TimeIn = table.Column<DateTime>(nullable: false),
                     TimeOut = table.Column<DateTime>(nullable: false),
@@ -69,7 +69,7 @@ namespace Visitors_Registration_System.Migrations
                         column: x => x.VisitorsId,
                         principalTable: "Visitors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
